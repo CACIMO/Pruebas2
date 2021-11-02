@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>Prueba</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="app.css" />
+
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="app.module.js"></script>
+  <body ng-controller='controlador'> 
+    <form>
+      <div ng-repeat ="input in formJson.inputs">
+        <label for="{{$index}}">{{input.label}} </label>
+        <select ng-if="input.type== 'select' "  id="{{$index}}">
+          <option  value ="{{opt.value}}" ng-repeat ="opt in input.options">{{opt.label}}</option>
+        </select>
+        <input ng-pattern="pattern(opt.reg_ex,input.required)" ng-if="input.type!= 'select' " id="{{$index}}"placeholder="{{input.placeholder}}"  type="{{input.type}}" ng-required ="input.required">
+      </div>
+    <form>
+  </body>
+</html>
